@@ -27,7 +27,7 @@ void scr3_update() {
   if (x_val < -53) {
     x_val = -53;
   }
-  // Adjust pivot_y
+  // Due to offset_y of pitch is changed, the pivot_y also need adjust to get correct rotation angle.
   int pivot_y = PIVOT_Y - (x_val - (OFFSET_Y));
 
   // Rotation angle

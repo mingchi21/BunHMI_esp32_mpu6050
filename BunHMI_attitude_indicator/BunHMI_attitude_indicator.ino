@@ -146,7 +146,7 @@ void loop() {
   // Check Data from HMI
   rxlen = rxHmiData(rxbuff, sizeof(rxbuff));
   if (rxlen) {
-    Serial.printf("HMI:%s\r\n", rxbuff);
+    //Serial.printf("HMI:%s\r\n", rxbuff);
     // Handle data from HMI
     handle_hmi_cmd(rxbuff);
   }
