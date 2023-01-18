@@ -41,8 +41,4 @@ void scr3_update() {
   }else{
     HMI_CMD("roll.angle(%d);pitch.angle(%d)", rotation_angle, rotation_angle);
   }
-
-#undef PIVOT_X
-#undef PIVOT_Y
-#undef OFFSET_Y
 }
