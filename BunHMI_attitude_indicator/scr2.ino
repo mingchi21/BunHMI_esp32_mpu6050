@@ -20,5 +20,5 @@ void scr2_init()
 int x_val = map(a.acceleration.x, -MAX_ABS_VAL, MAX_ABS_VAL, 0, 100);
 int y_val = map(a.acceleration.y, -MAX_ABS_VAL, MAX_ABS_VAL, 0, 100);
 int z_val = map(a.acceleration.z, -MAX_ABS_VAL, MAX_ABS_VAL, 0, 100);
-HMI_CMD("chart.mnext(%d,%d,%d)", x_val, y_val, z_val);
+HMI_CMD("chart.mnext(%d,%d,%d);", x_val, y_val, z_val);
 }

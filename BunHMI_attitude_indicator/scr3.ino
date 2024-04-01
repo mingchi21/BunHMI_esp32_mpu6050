@@ -37,8 +37,8 @@ void scr3_update() {
   }
   // Due to rotation take heavy MCU time, we interleave offset and angle to make animate more smooth
   if(++interleave_cnt & 1){
-    HMI_CMD("pitch.offset_y(%d)",  pitch_offset_y);
+    HMI_CMD("pitch.offset_y(%d);",  pitch_offset_y);
   }else{
-    HMI_CMD("roll.angle(%d);pitch.angle(%d)", rotation_angle, rotation_angle);
+    HMI_CMD("roll.angle(%d);pitch.angle(%d);", rotation_angle, rotation_angle);
   }
 }

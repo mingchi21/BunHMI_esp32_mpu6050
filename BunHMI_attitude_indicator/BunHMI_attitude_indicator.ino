@@ -196,7 +196,7 @@ void set_scr_idx(int idx) {
   Serial.printf("set scr idx=%d", idx);
   int scr_tab_cnt = sizeof(scr_table) / sizeof(scr_table[0]);
   if (idx < scr_tab_cnt) {
-    HMI_CMD("sys.scr(scr%d)", idx + 1);
+    HMI_CMD("sys.scr(scr%d);", idx + 1);
     scr_idx = idx;
     scr_table[scr_idx].init();
   }
