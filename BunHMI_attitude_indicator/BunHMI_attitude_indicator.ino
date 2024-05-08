@@ -161,33 +161,15 @@ void loop() {
   *  length of rx bytes
 */
 int rxHmiData(char *dat, int dat_len) {
-  static char hmiBuff[256];
-  static uint8_t hmiBuffLen = 0;
-
   if (!HMI.available()) {
     return 0;
   }
-  int rxlen = HMI.readBytes(hmiBuff + hmiBuffLen, sizeof(hmiBuff) - hmiBuffLen);
-  int i;
-  hmiBuffLen += rxlen;
-  for (i = hmiBuffLen - 1; i >= 0; i--) {
-    if (hmiBuff[i] == EOT) {
-      // Got EOT Byte
-      hmiBuff[i++] = 0;  // Change EOT to NULL,  string  terminate
-      int hmi_len = (i < dat_len) ? i : dat_len;
-      // Copy hmiBuff to dat
-      memcpy(dat, hmiBuff, hmi_len);
-      // Move remain data to the head of hmiBuff
-      int remain_len = 0;
-      while (i < hmiBuffLen) {
-        hmiBuff[remain_len] = hmiBuff[i];
-        remain_len++;
-        i++;
-      }
-      hmiBuffLen = remain_len;
-      return hmi_len;
-    }
+  int rxlen = HMI.readBytes(dat, dat_len);
+  if(rxlen > 0){
+    dat[rxlen-1] = 0; // Replace 0x04(EOT) to 0
+    return rxlen;
   }
+  
   return 0;
 }
 
